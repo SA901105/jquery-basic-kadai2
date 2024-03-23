@@ -40,25 +40,23 @@ $(function () {
       $.ajax({
         url: 'https://api.staticforms.xyz/submit',
         type: 'POST',
-        detaType: 'json',
+        dataType: 'json',
         data: $('#form').serialize(),
-        succese: function (result) {
+        success: function (result) {
           alert('お問い合わせを送信しました。')
         },
         error: function (xhr, resp, text) {
+          alert('お問い合わせを送信できませんでした。')
         }
       })
     } else {
       // エラーメッセージを表示する
       alert(message);
     }
-});
-
-
   });
 
-   // フォーカスが外れたとき（blur）にフォームの入力チェックをする
-   $('#name').blur(function () {
+  // フォーカスが外れたとき（blur）にフォームの入力チェックをする
+  $('#name').blur(function () {
     inputCheck();
   });
   $('#furigana').blur(function () {
@@ -77,9 +75,8 @@ $(function () {
     inputCheck();
   });
 
-  //お問い合わせフォームの入力チェック
+  // お問い合わせフォームの入力チェック
   function inputCheck() {
-    console.log('inputCheck関数の呼び出し');
     // エラーのチェック結果
     let result;
 
@@ -101,7 +98,7 @@ $(function () {
     }
 
     // フリガナのチェック
-    if($('#furigana').val () == '') {
+    if ($('#furigana').val() == '') {
       // エラーあり
       $('#furigana').css('background-color', '#f79999');
       error = true;
@@ -112,9 +109,9 @@ $(function () {
     }
 
     // お問い合わせのチェック
-    if ($('#message').val () == '') {
+    if ($('#message').val() == '') {
       // エラーあり
-      $('#email').css('background-color', '#f79999');
+      $('#message').css('background-color', '#f79999');
       error = true;
       message += 'お問い合わせ内容を入力してください。\n';
     } else {
@@ -123,7 +120,9 @@ $(function () {
     }
 
     // メールアドレスのチェック
-    if ($('#email').val() == '' || $('#email').val().indexOf('@') == -1 || $('#email').val().indexOf('.') == -1) {
+    if ($('#email').val() == '' ||
+      $('#email').val().indexOf('@') == -1 ||
+      $('#email').val().indexOf('.') == -1) {
       // エラーあり
       $('#email').css('background-color', '#f79999');
       error = true;
@@ -134,7 +133,8 @@ $(function () {
     }
 
     // 電話番号のチェック（未入力はOK、未入力でない場合は-が必要）
-    if ($('#tel').val() != '' && $('#tel').val().indexOf('-') == -1) {
+    if ($('#tel').val() != '' &&
+      $('#tel').val().indexOf('-') == -1) {
       // エラーあり
       $('#tel').css('background-color', '#f79999');
       error = true;
@@ -150,19 +150,20 @@ $(function () {
       message += '個人情報の取り扱いについてご同意いただける場合は、チェックボックスにチェックしてください。\n';
     }
 
-     // エラーの有無で送信ボタンを切り替え
+    // エラーの有無で送信ボタンを切り替え
     if (error == true) {
-      $('#submit').attr('src', 'images/button-submit.png');
+      $('#submit').attr('src', 'images/button-submit.png')
     } else {
-      $('#submit').attr('src', 'images/button-submit-blue.png');
+      $('#submit').attr('src', 'images/button-submit-blue.png')
     }
 
-     // オブジェクトでエラー判定とメッセージを返す
-     result = {
-       error: error,
-       message: message
-     }
- 
-     // 戻り値としてエラーがあるかどうかを返す
-     return result;
+    // オブジェクトでエラー判定とメッセージを返す
+    result = {
+      error: error,
+      message: message
+    }
+
+    // 戻り値としてエラーがあるかどうかを返す
+    return result;
   }
+});
