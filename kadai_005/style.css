@@ -7,6 +7,13 @@ p {
   font-size: 15px;
 }
 
+.arrow-right {	
+  color: #2710d5;	
+  }	
+  #submit {	
+  margin-top: 50px;	
+  }
+
 /*================
  PC用のスタイル
 =================*/
@@ -15,18 +22,18 @@ p {
   .carousel {
     width: 885px;
     margin-left: 20px;
-  }}
+  }
 
   .carouselImg {
     width: 885px;
   }
 
-/* 横幅設定 */
-body {
+ /* 横幅設定 */
+ body {
   max-width: 1080px;
-  min-width: 960px;
+  min-width: 900px;
   margin: 0 auto 0 auto;
-}
+ }
 
 	/* ヘッダー */
 header {
@@ -509,6 +516,7 @@ h3 {
   .case-content {
     font-size: 14px;
   }
+}
 
 /*====================
  スマートフォン用のスタイル
@@ -557,4 +565,5 @@ h3 {
 #menu-sp {
   top: 0px;
   right: 0px;
+}
 }
