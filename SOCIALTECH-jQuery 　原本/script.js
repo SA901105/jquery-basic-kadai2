@@ -33,23 +33,23 @@ $(function () {
 
    // フォーカスが外れたとき（blur）にフォームの入力チェックをする
    $('#name').blur(function () {
-     inputCheck();
-   });
-   $('#furigana').blur(function () {
-     inputCheck();
-   });
-   $('#email').blur(function () {
-     inputCheck();
-   });
-   $('#tel').blur(function () {
-     inputCheck();
-   });
-   $('#message').blur(function () {
-     inputCheck();
-   });
-   $('#agree').click(function () {
-     inputCheck();
-   });
+    inputCheck();
+  });
+  $('#furigana').blur(function () {
+    inputCheck();
+  });
+  $('#email').blur(function () {
+    inputCheck();
+  });
+  $('#tel').blur(function () {
+    inputCheck();
+  });
+  $('#message').blur(function () {
+    inputCheck();
+  });
+  $('#agree').click(function () {
+    inputCheck();
+  });
 
   //お問い合わせフォームの入力チェック
   function inputCheck() {
@@ -102,6 +102,17 @@ $(function () {
     } else {
       // エラーなし
       $('#email').css('background-color', '#fafafa');
+    }
+
+    // 電話番号のチェック（未入力はOK、未入力でない場合は、ーが必要）
+    if ($('#tel').val() != '' && $('#tel').val().indexOf('-') == -1) {
+      // エラーあり
+      $('#tel').css('background-color', '#f79999');
+      error = true;
+      message += '電話番号に「-」が含まれていません。\n';
+    } else {
+      // エラーなし
+      $('#tel').css('background', '#fafafa');
     }
   }
 });
